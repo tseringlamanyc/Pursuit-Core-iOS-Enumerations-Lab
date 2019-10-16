@@ -4,23 +4,33 @@ import UIKit
 
 // a. Define an enumeration called iOSDeviceType with member values iPhone, iPad, iWatch. Create a variable called myiPad and assign it to .iPad.
 
-// Your code here
 
-// Uncomment the lines below to test your solution
+enum iOSDeviceType {
+    case iPhone
+    case iPad
+    case iWatch
+}
 
-//let myiPad = iOSDeviceType.iPad
-//assert(myiPad == .iPad)
+
+let myiPad = iOSDeviceType.iPad
+assert(myiPad == .iPad)
 
 // b. Adjust your code above so that iPhone and iPad have associated values of type String which represents the model number.  Create an instance of a .iPhone("8+") and assign it to a variable called myPhone
 
-// Your code here
+enum ModelType {
+    case iPhone(String)
+    case iPad(String)
+    case iWatch
+}
+
+let myPhone = ModelType.iPhone("8+")
 
 // Uncomment the lines below to test your solution
 
-//switch myPhone {
-//case let .iPhone(model): assert(model == "8+", "Was expecting a model type of 8+, but got \(model)")
-//default: fatalError("Was expecting an iPhone but got \(myPhone)")
-//}
+switch myPhone {
+case let .iPhone(model): assert(model == "8+", "Was expecting a model type of 8+, but got \(model)")
+default: fatalError("Was expecting an iPhone but got \(myPhone)")
+}
 
 // Question Two
 
@@ -38,8 +48,22 @@ enum Step {
     case left
     case right
 }
+func getPosition(startingAt: (x: Int, y: Int), afterSteps: [Step] ) -> (x: Int, y: Int) {
+        var endPosition = (x: 0, y: 0)
+        let stepResult = Step.up
+        switch stepResult {
+        case.up:
+            endPosition.y += 1
+        case.down:
+            endPosition.y -= 1
+        case.right:
+            endPosition.x += 1
+        case.left:
+            endPosition.x -= 1
+        }
+        return endPosition
+    }
 
-// Your function here
 
 // Uncomment the lines below to test your solution
 
@@ -61,22 +85,28 @@ enum Coin: Int {
     case quarter = 25
 }
 
-// Your function here
+func getTotalValue (from: [(Int, Coin)]) -> Int {
+    var result = 0
+    for (coins, value) in from {
+        result += coins * value.rawValue
+        }
+    return result
+}
 
 // Uncomment the lines below to test your solution
 
-//let coinArr: [(Int, Coin)] = [
-//    (10, .penny),
-//    (15, .nickle),
-//    (3, .quarter),
-//    (20, .penny),
-//    (3, .dime),
-//    (7, .quarter)
-//]
-//
-//let expectedTotal = 385
-//let total = getTotalValue(from: coinArr)
-//assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)")
+let coinArr: [(Int, Coin)] = [
+    (10, .penny),
+    (15, .nickle),
+    (3, .quarter),
+    (20, .penny),
+    (3, .dime),
+    (7, .quarter)
+]
+
+let expectedTotal = 385
+let total = getTotalValue(from: coinArr)
+assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)")
 
 // Question Four
 
