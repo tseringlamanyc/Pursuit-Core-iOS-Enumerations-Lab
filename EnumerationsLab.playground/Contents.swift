@@ -25,6 +25,15 @@ enum ModelType {
 
 let myPhone = ModelType.iPhone("8+")
 
+switch myPhone {
+case.iPhone(let model):
+    print("\(model)")
+case.iWatch:
+    print("ipad")
+case.iPad(let model):
+    print("\(model)")
+}
+
 // Uncomment the lines below to test your solution
 
 switch myPhone {
@@ -113,17 +122,49 @@ assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)
 // Write an enum called Day to represent the days of the week with a raw value of type String.
 // Write a method inside Day that returns whether or not it is a weekday (Monday - Friday)
 
-// Your code here
+enum Day: String {
+    case monday, tuesday, wednesday, thursday, friday = "weekday"
+    case saturday, sunday = "weekend"
+    
+    func isWeekday () -> Bool {
+        var weekdayCheck = true
+        switch self {
+        case.monday:
+            print("Monday is a weekday")
+            weekdayCheck = true
+        case.tuesday:
+            print("Tuesday is a weekday")
+            weekdayCheck = true
+        case.wednesday:
+            print("Wednesday is a weekday")
+            weekdayCheck = true
+        case.thursday:
+            print("Thursday is a weekday")
+            weekdayCheck = true
+        case.friday:
+            print("Friday is a weekday")
+            weekdayCheck = true
+        case.saturday:
+            print("Saturday is not a weekday")
+            weekdayCheck = false
+        case.sunday:
+            print("Sunday is not a weekday")
+            weekdayCheck = false
+        }
+        return weekdayCheck
+    }
+}
+
 
 // Uncomment the lines below to test your solution
-
-//assert(Day.monday.isWeekday() == true, "Monday is a weekday")
-//assert(Day.tuesday.isWeekday() == true, "Tuesday is a weekday")
-//assert(Day.wednesday.isWeekday() == true, "Wednesday is a weekday")
-//assert(Day.thursday.isWeekday() == true, "Thursday is a weekday")
-//assert(Day.friday.isWeekday() == true, "Friday is a weekday")
-//assert(Day.saturday.isWeekday() == false, "Saturday is not a weekday")
-//assert(Day.sunday.isWeekday() == false, "Sunday is not a weekday")
+//
+assert(Day.monday.isWeekday() == true, "Monday is a weekday")
+assert(Day.tuesday.isWeekday() == true, "Tuesday is a weekday")
+assert(Day.wednesday.isWeekday() == true, "Wednesday is a weekday")
+assert(Day.thursday.isWeekday() == true, "Thursday is a weekday")
+assert(Day.friday.isWeekday() == true, "Friday is a weekday")
+assert(Day.saturday.isWeekday() == false, "Saturday is not a weekday")
+assert(Day.sunday.isWeekday() == false, "Sunday is not a weekday")
 
 // Question Five
 
@@ -133,8 +174,25 @@ assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)
 //
 //Rock beats scissors, paper beats rock, scissor beats paper
 
-// Your code here
+enum HandShape {
+    case rock
+    case paper
+    case scissors
+}
 
+enum MatchResult {
+    case win
+    case lose
+    case draw
+}
+
+func matchResult(fromPlayerOneShape x: HandShape, andPlayerTwoShape y: HandShape) -> MatchResult {
+    var winner = true
+    if x == HandShape.rock && y == HandShape.scissors {
+        
+    }
+    return
+}
 // Uncomment the lines below to test your solution
 
 //let testCases: [(HandShape, HandShape, MatchResult)] = [
